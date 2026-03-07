@@ -1,0 +1,475 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Special+Elite&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Special+Elite&family=Quicksand&family=VT323&family=Nunito:wght@400;700&display=swap');
+/* ===========================
+   ROOT THEME VARIABLES
+=========================== */
+:root{
+  --app-font:"Courier New", monospace;
+  --font-scale:1;
+}
+.app{
+  font-size:calc(14px * var(--font-scale));
+}
+.timer{
+  font-size:calc(48px * var(--font-scale));
+}
+:root {
+  --app-bg: rgba(255, 240, 246, 0.95);
+  --text-color: #6d597a;
+  --button-bg: #cdb4db;
+  --button-hover: #ffc8dd;
+  --stat-bg: linear-gradient(135deg, #ffe5ec, #f3d5ff);
+  --modal-bg: #fbf7ff;
+  --timer-color: #9f86c0;
+  --overlay-color: rgba(0,0,0,0.45);
+}
+body.default{
+  --app-font:"Courier New", monospace;
+  --font-scale:1;
+}
+
+body.pixel{
+  --app-font:"Press Start 2P", monospace;
+  --font-scale:0.65;
+}
+
+body.retro{
+  --app-font:"VT323", monospace;
+  --font-scale:1.2;
+}
+
+body.typewriter{
+  --app-font:"Special Elite", cursive;
+  --font-scale:0.9;
+}
+
+body.cute{
+  --app-font:"Quicksand", sans-serif;
+  --font-scale:1;
+}
+
+body.soft{
+  --app-font:"Nunito", sans-serif;
+  --font-scale:1;
+}
+/* ===========================
+   BASE LAYOUT
+=========================== */
+
+body{
+  margin:0;
+  font-family:var(--app-font);
+  background:transparent;
+  color:var(--text-color);
+  user-select:none;
+}
+
+button,
+input,
+select,
+label{
+  font-family:inherit;
+}
+
+.app {
+  padding: 18px;
+  border-radius: 28px;
+  background: var(--app-bg);
+  backdrop-filter: blur(10px);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  transition: opacity 0.4s ease, filter 0.4s ease, background 0.4s ease, color 0.4s ease;
+}
+
+/* Idle fade */
+.app.idle {
+  opacity: 0.4;
+  filter: blur(2px);
+}
+
+/* ===========================
+   DRAG BAR
+=========================== */
+
+.drag-bar {
+  -webkit-app-region: drag;
+  background: var(--button-bg);
+  color: white;
+  padding: 8px;
+  text-align: center;
+  border-radius: 14px;
+  font-weight: bold;
+  position: relative;
+}
+
+.settings-icon {
+  position: absolute;
+  right: 12px;
+  cursor: pointer;
+  -webkit-app-region: no-drag;
+}
+
+/* ===========================
+   ROOM (GIF AREA)
+=========================== */
+
+.room {
+  position: relative;
+  height: 220px;
+  border-radius: 24px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* GIF */
+.motivation-gif {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 24px;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+}
+
+/* Overlay for readability */
+.room-overlay {
+  position: absolute;
+  inset: 0;
+  background: var(--overlay-color);
+  border-radius: 24px;
+  pointer-events: none;
+}
+
+/* ===========================
+   TIMER & STATUS
+=========================== */
+
+.timer {
+  font-size: 48px;
+  text-align: center;
+  font-weight: bold;
+  color: var(--timer-color);
+  text-shadow: 0 0 10px rgba(255,255,255,0.4);
+}
+
+.status {
+  text-align: center;
+  font-size: 14px;
+  opacity: 0.8;
+}
+
+/* ===========================
+   CONTROLS
+=========================== */
+
+.controls {
+  display: flex;
+  gap: 8px;
+}
+
+.controls button {
+  flex: 1;
+  padding: 8px;
+  border: none;
+  border-radius: 14px;
+  background: var(--button-bg);
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.controls button:hover {
+  background: var(--button-hover);
+  transform: scale(1.05);
+}
+
+/* ===========================
+   DAILY STATS
+=========================== */
+
+.daily-stats {
+  display: flex;
+  gap: 10px;
+}
+
+.stat-card {
+  flex: 1;
+  background: var(--stat-bg);
+  padding: 12px;
+  border-radius: 18px;
+  text-align: center;
+  transition: transform 0.2s ease;
+}
+
+.stat-card:hover {
+  transform: translateY(-3px);
+}
+
+.stat-number {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.stat-label {
+  font-size: 11px;
+  opacity: 0.8;
+}
+
+/* ===========================
+   FOOTER
+=========================== */
+
+.footer {
+  text-align: center;
+  font-size: 11px;
+  opacity: 0.7;
+}
+
+/* ===========================
+   MODAL
+=========================== */
+
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.3);
+  backdrop-filter: blur(6px);
+  display: none;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-content {
+  background: var(--modal-bg);
+  padding: 20px;
+  border-radius: 20px;
+  width: 260px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  transition: background 0.3s ease;
+}
+
+.setting-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+}
+
+.setting-row input,
+.setting-row select {
+  border-radius: 8px;
+  border: none;
+  padding: 4px;
+  font-family: inherit;
+}
+
+/* Modal buttons */
+.modal-buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.modal-buttons button {
+  flex: 1;
+  padding: 8px;
+  border-radius: 14px;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.modal-buttons button:first-child {
+  background: var(--button-bg);
+  color: white;
+}
+
+.modal-buttons button:last-child {
+  background: #dddddd;
+  color: #444;
+}
+
+/* ===========================
+   THEMES
+=========================== */
+
+body.snow{
+  --app-bg: rgba(245, 250, 255, 0.95);
+  --text-color: #2b3a55;
+  --button-bg: #a8c7ff;
+  --button-hover: #c6dbff;
+  --stat-bg: linear-gradient(135deg,#e6f2ff,#f5faff);
+  --modal-bg: #f0f7ff;
+  --timer-color: #5a8dee;
+  --overlay-color: rgba(0,0,0,0.3);
+}
+
+body.cyberpunk{
+  --app-bg: rgba(15, 15, 15, 0.95);
+  --text-color: #00fff7;
+  --button-bg: #ff00aa;
+  --button-hover: #ff33bb;
+  --stat-bg: linear-gradient(135deg,#330033,#1a001a);
+  --modal-bg: #1a001a;
+  --timer-color: #00fff7;
+  --overlay-color: rgba(0,0,0,0.7);
+}
+
+body.galaxy{
+  --app-bg: rgba(20, 20, 40, 0.95);
+  --text-color: #e6e6ff;
+  --button-bg: #6a5acd;
+  --button-hover: #8a7cff;
+  --stat-bg: linear-gradient(135deg,#2a2a5a,#1c1c3a);
+  --modal-bg: #2a2a5a;
+  --timer-color: #a5a5ff;
+  --overlay-color: rgba(0,0,0,0.6);
+}
+
+body.sunset{
+  --app-bg: rgba(255, 230, 210, 0.95);
+  --text-color: #5a2c2c;
+  --button-bg: #ff9966;
+  --button-hover: #ffb380;
+  --stat-bg: linear-gradient(135deg,#ffd1b3,#ffe4cc);
+  --modal-bg: #fff3e6;
+  --timer-color: #ff6633;
+  --overlay-color: rgba(0,0,0,0.4);
+}
+
+body.matcha{
+  --app-bg: rgba(235, 255, 235, 0.95);
+  --text-color: #355e3b;
+  --button-bg: #7fbf7f;
+  --button-hover: #a6d9a6;
+  --stat-bg: linear-gradient(135deg,#d6f5d6,#ecffec);
+  --modal-bg: #f5fff5;
+  --timer-color: #3c8d3c;
+  --overlay-color: rgba(0,0,0,0.35);
+}
+
+body.sakura{
+  --app-bg: rgba(255, 235, 242, 0.95);
+  --text-color: #7a3e65;
+  --button-bg: #ff9ebc;
+  --button-hover: #ffc1d6;
+  --stat-bg: linear-gradient(135deg,#ffd6e7,#ffe9f1);
+  --modal-bg: #fff4f8;
+  --timer-color: #ff6fa5;
+  --overlay-color: rgba(0,0,0,0.35);
+}
+
+/* 🌸 Pastel */
+body.pastel {
+  --app-bg: rgba(255, 240, 246, 0.95);
+  --text-color: #6d597a;
+  --button-bg: #cdb4db;
+  --button-hover: #ffc8dd;
+  --stat-bg: linear-gradient(135deg, #ffe5ec, #f3d5ff);
+  --modal-bg: #fbf7ff;
+  --timer-color: #9f86c0;
+  --overlay-color: rgba(0,0,0,0.45);
+}
+
+/* 🌙 Night */
+body.night {
+  --app-bg: rgba(30, 30, 40, 0.95);
+  --text-color: #e0e0ff;
+  --button-bg: #3a3a55;
+  --button-hover: #57577a;
+  --stat-bg: linear-gradient(135deg, #2a2a40, #1e1e30);
+  --modal-bg: #2a2a40;
+  --timer-color: #90caf9;
+  --overlay-color: rgba(0,0,0,0.5);
+}
+
+/* 📚 Dark Academia */
+body.dark {
+  --app-bg: rgba(45, 30, 25, 0.95);
+  --text-color: #f5e6d3;
+  --button-bg: #6d4c41;
+  --button-hover: #8d6e63;
+  --stat-bg: linear-gradient(135deg, #5d4037, #3e2723);
+  --modal-bg: #4e342e;
+  --timer-color: #ffcc80;
+  --overlay-color: rgba(0,0,0,0.6);
+}
+
+/* ⚡ Training Arc */
+body.training {
+  --app-bg: rgba(10, 15, 30, 0.95);
+  --text-color: #e0f7ff;
+  --button-bg: #004e92;
+  --button-hover: #0077ff;
+  --stat-bg: linear-gradient(135deg, #001f3f, #003366);
+  --modal-bg: #002244;
+  --timer-color: #00e5ff;
+  --overlay-color: rgba(0,0,0,0.55);
+}
+
+.motivation-message{
+  text-align:center;
+  font-size:12px;
+  opacity:0.8;
+  min-height:16px;
+  transition:opacity 0.3s ease;
+  font-style:italic;
+}
+
+body.mini-mode .room,
+body.mini-mode .daily-stats,
+body.mini-mode .controls,
+body.mini-mode .footer{
+display:none;
+}
+
+body.mini-mode .timer{
+font-size:36px;
+}
+
+body.mini-mode .status{
+font-size:12px;
+}
+
+body.mini-mode .app{
+padding:10px;
+gap:4px;
+}
+
+#restoreBtn{
+display:none;
+position:absolute;
+top:6px;
+right:44px;
+border:none;
+background:transparent;
+color:var(--text-color);
+font-size:14px;
+cursor:pointer;
+
+-webkit-app-region: no-drag; /* IMPORTANT */
+}
+body.mini-mode #restoreBtn{
+display:block;
+}
+
+body.mini-mode .room,
+body.mini-mode .daily-stats,
+body.mini-mode .controls,
+body.mini-mode .footer{
+display:none;
+}
+
+body.mini-mode{
+pointer-events:none;
+}
+
+body.mini-mode .app{
+pointer-events:auto;
+}

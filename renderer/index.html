@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Pixel Study Buddy</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="app">
+    
+  <div class="drag-bar">
+    POMODORO TIMER
+    <span class="settings-icon" onclick="openSettings()">⚙️</span>
+    <button id="restoreBtn" onclick="toggleMiniMode()">⤢</button>
+  </div>
+
+<div class="room">
+  <img id="motivationGif" class="motivation-gif" />
+  <div class="room-overlay"></div>
+</div>
+
+  <div class="timer" id="timer">25:00</div>
+  <div class="status" id="status">Ready</div>
+  <div class="motivation-message" id="motivationMessage"></div>
+
+  <div class="controls">
+      <button onclick="startTimer()">Start</button>
+      <button onclick="pauseTimer()">Pause</button>
+      <button onclick="resetTimer()">Reset</button>
+      <button onclick="skipSession()">Skip</button>
+      <button onclick="toggleMiniMode()">Mini Mode</button>
+  </div>
+
+  <div class="daily-stats">
+    <div class="stat-card">
+      <div class="stat-number" id="todayCount">0</div>
+      <div class="stat-label">Pomodoros Today</div>
+    </div>
+
+    <div class="stat-card">
+      <div class="stat-number" id="todayMinutes">0</div>
+      <div class="stat-label">Focus Minutes</div>
+    </div>
+  </div>
+
+  <div class="footer">Made with ♡ by Tanisha</div>
+
+</div>
+
+<!-- SETTINGS MODAL -->
+<div class="modal" id="settingsModal">
+  <div class="modal-content">
+    <h3>Settings</h3>
+
+    <div class="setting-row">
+      <label>Work (min)</label>
+      <input type="number" id="workInput" min="1">
+    </div>
+
+    <div class="setting-row">
+      <label>Short Break (min)</label>
+      <input type="number" id="shortInput" min="1">
+    </div>
+
+    <div class="setting-row">
+      <label>Long Break (min)</label>
+      <input type="number" id="longInput" min="1">
+    </div>
+
+    <div class="setting-row">
+      <label>Motivation GIF</label>
+      <input type="text" id="gifInput" placeholder="Paste GIF URL">
+    </div>
+
+    <div class="setting-row">
+  <label>Theme</label>
+<select id="themeSelect">
+
+<option value="pastel">Pastel</option>
+<option value="night">Night</option>
+<option value="dark">Dark Academia</option>
+<option value="training">Training Arc</option>
+
+<option value="sakura">Sakura Blossom</option>
+<option value="ocean">Ocean Calm</option>
+<option value="matcha">Matcha Study</option>
+<option value="sunset">Sunset Focus</option>
+<option value="galaxy">Galaxy Anime</option>
+<option value="cyberpunk">Cyberpunk</option>
+<option value="snow">Snowy Study</option>
+
+</select>
+</div>
+
+<select id="fontSelect">
+<option value="default">Default</option>
+<option value="pixel">Pixel</option>
+<option value="retro">Retro Terminal</option>
+<option value="typewriter">Typewriter</option>
+<option value="cute">Cute Rounded</option>
+<option value="soft">Soft UI</option>
+</select>
+
+    <div class="setting-row">
+      <label>Mute Sounds</label>
+      <input type="checkbox" id="muteToggle">
+    </div>
+
+    <div class="modal-buttons">
+      <button onclick="saveSettings()">Save</button>
+      <button onclick="closeSettings()">Cancel</button>
+    </div>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

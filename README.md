@@ -96,17 +96,23 @@ dist/
 
 ## 🎯 Why I Built This
 
-Most Pomodoro timers feel boring or cluttered.
-Pixel Study Buddy was built to create a **cozy, customizable study companion** that feels pleasant to keep on your desktop while focusing.
+Most lightweight Pomodoro timers are web-based and run inside a browser tab.
+When the tab is closed, the browser sleeps in the background, or you switch tasks, the timer can pause or stop entirely.
 
----
+While studying on the same laptop, I often found that browser-based timers were unreliable and distracting.
+
+So I built **Pixel Study Buddy**, a lightweight desktop Pomodoro timer that:
+
+* stays active independently of browser tabs
+* runs as a small floating widget while working
+* provides a cozy and customizable study environment
+
+The goal was to create a **minimal, distraction-free focus companion** that stays with you throughout your work session.
+
 
 ## 📸 Screenshots
 
-(Add screenshots here later)
+
 
 ---
 
-## 📄 License
-
-MIT License

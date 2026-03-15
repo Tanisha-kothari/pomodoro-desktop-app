@@ -110,9 +110,5 @@ So I built **Pixel Study Buddy**, a lightweight desktop Pomodoro timer that:
 The goal was to create a **minimal, distraction-free focus companion** that stays with you throughout your work session.
 
 
-## 📸 Screenshots
-
-
-
 ---
 
